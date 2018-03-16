@@ -106,18 +106,23 @@ namespace TUBES_STIMA_2
             return result;
         }
 
-/*         public void utilityDFS(int v, bool[] visited, Stack<int> st){
+        public void utilityDFS(int v, bool[] visited, Stack<int> st){
             visited[v] = true;
 
-            for(int i=0; i<vertice; i++){
-                for(int j=0; j<(adj[i]).Count; j++){
-                    if ((adj[i])[j] == v && !visited[i])
+            for(int i=0; i<(adj[v]).Count; i++){
+                for(int j=0; j<vertice; j++) {
+                    if((adj[v])[i] == j){
+                        if(!visited[j]) utilityDFS(j, visited, st);
+                    }
                 }
             }
+            st.Push(v);
         }
 
         public List<int> topologicalSortDFS(){
+            int start = 0;
             Stack<int> st = new Stack<int>();
+            List<int> result = new List<int>();
 
             bool[] visited = new bool[vertice];
             for (int i=0; i<vertice; i++){
@@ -130,7 +135,15 @@ namespace TUBES_STIMA_2
                 }
             }
 
-        } */
+            while (st.Count!=0){
+                int top = (int)st.Peek();
+                st.Pop();
+                result.Add(top);
+            }
+
+            return result;
+
+        }
 
     }
 }
