@@ -21,7 +21,7 @@ namespace TUBES_STIMA_2
 
         public void addEdge(int a, int b)
         {
-            (adj[b]).Add(a);
+            (adj[a]).Add(b);
         }
 
         // implementing kahn's algorithm for topological sorting
@@ -33,14 +33,19 @@ namespace TUBES_STIMA_2
                 v_degree.Add(0);
             }
 
-            Console.Write("Jumlah awal derajat masuk : \n");
+            Console.Write("Initial in-degrees of each vertices : \n");
 
             // fill list v_degree with number of degrees
             for(int i=0; i<vertice; i++) {
                 for(int j=0; j<(adj[i]).Count; j++) {
-                    v_degree[i]++;
+                    for (int k=0; k<vertice; k++){
+                        if ((adj[i])[j]==k) v_degree[k]++;
+                    }
                 }
-                Console.Write("V["+i+"] = "+v_degree[i]+"\n");
+            }
+
+            for (int i = 0; i < vertice; i++) {
+                Console.Write("V[" + i + "] = " + v_degree[i] + "\n");
             }
 
             // enqueue all vertices with 0 degree into a queue
@@ -60,31 +65,38 @@ namespace TUBES_STIMA_2
             // deque vertices from queue, and enqueue neighbors whenever its degree becomes 0
             while (q.Count!=0) {
                 
-                int extract_front = (int)q.Peek();
-                q.Dequeue();                    // deque the front of the queue
-                result.Add(extract_front);      // insert the front into result list
-
-                // decrement all its neighboring nodes
-                for (int i=0; i<vertice; i++) {
-                    for(int j=0; j<(adj[i]).Count; j++){
-                        // decrement v_degree, insert to queue if it becomes zero
-                        if ((adj[i])[j] == extract_front && (--v_degree[i] == 0)) q.Enqueue(i);
-                    }
-                }
-                visited_count++;
-
-                Console.Write("\nJumlah derajat masuk: \n");
+                // print to screen number of indegrees
+                Console.Write("\nCurrent number of in degrees within each vertices: \n");
                 for (int i = 0; i < vertice; i++)
                 {
                     Console.WriteLine("V[" + i + "] = " + v_degree[i]);
                 }
+                
+                int extract_front = (int)q.Peek();
+                q.Dequeue();                    // deque the front of the queue
+                result.Add(extract_front);      // insert the front into result list
+
+                // print to screen current topological sort result
                 Console.Write("\nHasil topological sort sementara : (");
                 for (int i = 0; i < result.Count; i++)
                 {
-                    if (i!=0) Console.Write(",");
+                    if (i != 0) Console.Write(",");
                     Console.Write(result[i]);
                 }
                 Console.Write(")\n");
+
+                // decrement all its neighboring nodes
+                for(int j=0; j<(adj[extract_front]).Count; j++){
+                    for (int i=0; i<vertice; i++){
+                        if ((adj[extract_front])[j]==i) {
+                            v_degree[i]--;
+                            if (v_degree[i] == 0) q.Enqueue(i);
+                        }
+                    }
+                    // decrement v_degree, insert to queue if it becomes zero
+                }
+                visited_count++;
+
             }
 
             if (visited_count != vertice) {
@@ -93,6 +105,32 @@ namespace TUBES_STIMA_2
 
             return result;
         }
+
+/*         public void utilityDFS(int v, bool[] visited, Stack<int> st){
+            visited[v] = true;
+
+            for(int i=0; i<vertice; i++){
+                for(int j=0; j<(adj[i]).Count; j++){
+                    if ((adj[i])[j] == v && !visited[i])
+                }
+            }
+        }
+
+        public List<int> topologicalSortDFS(){
+            Stack<int> st = new Stack<int>();
+
+            bool[] visited = new bool[vertice];
+            for (int i=0; i<vertice; i++){
+                visited[i]=false;
+            }
+
+            for(int i=0; i<vertice; i++){
+                if (visited[i] == false){
+                    utilityDFS(i, visited, st);
+                }
+            }
+
+        } */
 
     }
 }
