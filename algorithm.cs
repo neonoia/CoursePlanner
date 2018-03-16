@@ -8,10 +8,12 @@ namespace TUBES_STIMA_2
 
     class Graph{
         private int vertice;    // number of vertices
+        private int start;
         private List<int>[] adj; // list of adjacencies
 
         public Graph(int v)
         {
+            start = 0;
             vertice = v;
             adj = new List<int>[vertice];
             for(int i=0; i<vertice; i++){
@@ -106,23 +108,50 @@ namespace TUBES_STIMA_2
             return result;
         }
 
-        public void utilityDFS(int v, bool[] visited, Stack<int> st){
+        public void utilityDFS(int v, bool[] visited, Stack<int> st, List<int>[] time){
             visited[v] = true;
+            start++;
+            (time[v]).Add(start);
 
             for(int i=0; i<(adj[v]).Count; i++){
                 for(int j=0; j<vertice; j++) {
                     if((adj[v])[i] == j){
-                        if(!visited[j]) utilityDFS(j, visited, st);
+                        if(!visited[j]) utilityDFS(j, visited, st, time);
                     }
                 }
             }
             st.Push(v);
+            start++;
+            (time[v]).Add(start);
         }
 
-        public List<int> topologicalSortDFS(){
-            int start = 0;
+        public List<int>[] topologicalSortDFS(){
             Stack<int> st = new Stack<int>();
-            List<int> result = new List<int>();
+            List<int>[] result = new List<int>[vertice];
+            List<int>[] time = new List<int>[vertice];
+            for (int i=0;i<vertice; i++){
+                result[i] = new List<int>();
+                time[i] = new List<int>();
+            }
+
+            // create a list v_degree to store in-degrees of each vertices
+            List<int> v_degree = new List<int>();
+            for (int i = 0; i < vertice; i++)
+            {
+                v_degree.Add(0);
+            }
+
+            // fill list v_degree with number of in-degrees of each vertices
+            for (int i = 0; i < vertice; i++)
+            {
+                for (int j = 0; j < (adj[i]).Count; j++)
+                {
+                    for (int k = 0; k < vertice; k++)
+                    {
+                        if ((adj[i])[j] == k) v_degree[k]++;
+                    }
+                }
+            }
 
             bool[] visited = new bool[vertice];
             for (int i=0; i<vertice; i++){
@@ -130,15 +159,19 @@ namespace TUBES_STIMA_2
             }
 
             for(int i=0; i<vertice; i++){
-                if (visited[i] == false){
-                    utilityDFS(i, visited, st);
+                if (visited[i] == false && v_degree[i]==0){
+                    utilityDFS(i, visited, st, time);
                 }
             }
 
+            int idx = 0;
             while (st.Count!=0){
                 int top = (int)st.Peek();
                 st.Pop();
-                result.Add(top);
+                (result[idx]).Add(top);
+                (result[idx]).Add((time[top])[0]);
+                (result[idx]).Add((time[top])[1]);
+                idx++;
             }
 
             return result;
