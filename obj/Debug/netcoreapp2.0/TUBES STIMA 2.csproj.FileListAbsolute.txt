@@ -1,0 +1,10 @@
+D:\Programming\C#\TUBES STIMA 2\bin\Debug\netcoreapp2.0\TUBES STIMA 2.deps.json
+D:\Programming\C#\TUBES STIMA 2\bin\Debug\netcoreapp2.0\TUBES STIMA 2.runtimeconfig.json
+D:\Programming\C#\TUBES STIMA 2\bin\Debug\netcoreapp2.0\TUBES STIMA 2.runtimeconfig.dev.json
+D:\Programming\C#\TUBES STIMA 2\bin\Debug\netcoreapp2.0\TUBES STIMA 2.dll
+D:\Programming\C#\TUBES STIMA 2\bin\Debug\netcoreapp2.0\TUBES STIMA 2.pdb
+D:\Programming\C#\TUBES STIMA 2\obj\Debug\netcoreapp2.0\TUBES STIMA 2.csproj.CoreCompileInputs.cache
+D:\Programming\C#\TUBES STIMA 2\obj\Debug\netcoreapp2.0\TUBES STIMA 2.AssemblyInfoInputs.cache
+D:\Programming\C#\TUBES STIMA 2\obj\Debug\netcoreapp2.0\TUBES STIMA 2.AssemblyInfo.cs
+D:\Programming\C#\TUBES STIMA 2\obj\Debug\netcoreapp2.0\TUBES STIMA 2.dll
+D:\Programming\C#\TUBES STIMA 2\obj\Debug\netcoreapp2.0\TUBES STIMA 2.pdb
