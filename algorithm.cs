@@ -7,10 +7,11 @@ namespace TUBES_STIMA_2
 {
 
     class Graph{
-        private int vertice;    // number of vertices
-        private int start;
-        private List<int>[] adj; // list of adjacencies
+        private int vertice;        // number of vertices
+        private int start;          // keep track of timestamp
+        private List<int>[] adj;    // list of adjacencies
 
+        // Constructor
         public Graph(int v)
         {
             start = 0;
@@ -21,6 +22,7 @@ namespace TUBES_STIMA_2
             }
         }
 
+        // method to add edge into graph with direction a->b
         public void addEdge(int a, int b)
         {
             (adj[a]).Add(b);
@@ -79,28 +81,30 @@ namespace TUBES_STIMA_2
                 result.Add(extract_front);      // insert the front into result list
 
                 // print to screen current topological sort result
-                Console.Write("\nHasil topological sort sementara : (");
-                for (int i = 0; i < result.Count; i++)
-                {
-                    if (i != 0) Console.Write(",");
-                    Console.Write(result[i]);
+                if (result.Count<vertice) {
+                    Console.Write("\nCurrent topological sort result : (");
+                    for (int i = 0; i < result.Count; i++)
+                    {
+                        if (i != 0) Console.Write(",");
+                        Console.Write(result[i]);
+                    }
+                    Console.Write(")\n");
                 }
-                Console.Write(")\n");
 
                 // decrement all its neighboring nodes
                 for(int j=0; j<(adj[extract_front]).Count; j++){
                     for (int i=0; i<vertice; i++){
                         if ((adj[extract_front])[j]==i) {
-                            v_degree[i]--;
+                            v_degree[i]--;                          // decrement v_degree, insert to queue if it becomes zero
                             if (v_degree[i] == 0) q.Enqueue(i);
                         }
                     }
-                    // decrement v_degree, insert to queue if it becomes zero
                 }
                 visited_count++;
 
             }
 
+            // check cycle existence
             if (visited_count != vertice) {
                 Console.WriteLine("Unable to sort topologically because there's a cycle within graph");
             }
@@ -108,11 +112,13 @@ namespace TUBES_STIMA_2
             return result;
         }
 
+        // recursive function used by the main dfs function to determine which vertice to be explored next
         public void utilityDFS(int v, bool[] visited, Stack<int> st, List<int>[] time){
             visited[v] = true;
-            start++;
-            (time[v]).Add(start);
+            start++;                        // increment timestamp whenever visiting new vertice
+            (time[v]).Add(start);           // write visit timestamp to time[v]
 
+            // recursively visit the unvisited vertice
             for(int i=0; i<(adj[v]).Count; i++){
                 for(int j=0; j<vertice; j++) {
                     if((adj[v])[i] == j){
@@ -121,11 +127,14 @@ namespace TUBES_STIMA_2
                 }
             }
             st.Push(v);
-            start++;
-            (time[v]).Add(start);
+            start++;                        // increment timestamp whenever pushing (sign of leaving) vertice
+            (time[v]).Add(start);           // write leaving timestamp to time[v]
         }
 
+        // main dfs function. using utilityDFS recursively
         public List<int>[] topologicalSortDFS(){
+
+            // initialize needed container and variable
             Stack<int> st = new Stack<int>();
             List<int>[] result = new List<int>[vertice];
             List<int>[] time = new List<int>[vertice];
@@ -153,17 +162,23 @@ namespace TUBES_STIMA_2
                 }
             }
 
+            // initialize all vertices to false (unexplored)
             bool[] visited = new bool[vertice];
             for (int i=0; i<vertice; i++){
                 visited[i]=false;
             }
 
+            // start the recursive function from the vertice with 0 in-degrees
             for(int i=0; i<vertice; i++){
                 if (visited[i] == false && v_degree[i]==0){
                     utilityDFS(i, visited, st, time);
                 }
             }
 
+            // pop the resulting stack, and write to list of array with format:
+            // adj[idx][0] = vertice number
+            // adj[idx][1] = timestamp visited
+            // adj[idx][2] = timestamp left
             int idx = 0;
             while (st.Count!=0){
                 int top = (int)st.Peek();
