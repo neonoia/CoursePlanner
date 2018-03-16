@@ -671,11 +671,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Programming\\C#\\TUBES STIMA 2\\TUBES STIMA 2.csproj",
+      "projectUniqueName": "D:\\Programming\\C#\\CoursePreparator\\TUBES STIMA 2.csproj",
       "projectName": "TUBES STIMA 2",
-      "projectPath": "D:\\Programming\\C#\\TUBES STIMA 2\\TUBES STIMA 2.csproj",
+      "projectPath": "D:\\Programming\\C#\\CoursePreparator\\TUBES STIMA 2.csproj",
       "packagesPath": "C:\\Users\\Budiman\\.nuget\\packages\\",
-      "outputPath": "D:\\Programming\\C#\\TUBES STIMA 2\\obj\\",
+      "outputPath": "D:\\Programming\\C#\\CoursePreparator\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackagesFallback\\",
