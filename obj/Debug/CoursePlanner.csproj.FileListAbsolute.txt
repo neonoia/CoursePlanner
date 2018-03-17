@@ -1,17 +1,11 @@
-D:\Programming\C#\CoursePlanner - Copy\bin\Debug\GraphSharpTutorial01.exe
-D:\Programming\C#\CoursePlanner - Copy\bin\Debug\GraphSharpTutorial01.pdb
 D:\Programming\C#\CoursePlanner - Copy\bin\Debug\GraphSharp.pdb
 D:\Programming\C#\CoursePlanner - Copy\obj\Debug\CoursePlanner.csprojResolveAssemblyReference.cache
 D:\Programming\C#\CoursePlanner - Copy\obj\Debug\Window1.baml
 D:\Programming\C#\CoursePlanner - Copy\obj\Debug\Window1.g.cs
 D:\Programming\C#\CoursePlanner - Copy\obj\Debug\App.g.cs
-D:\Programming\C#\CoursePlanner - Copy\obj\Debug\GraphSharpTutorial01_MarkupCompile.cache
-D:\Programming\C#\CoursePlanner - Copy\obj\Debug\GraphSharpTutorial01.g.resources
 D:\Programming\C#\CoursePlanner - Copy\obj\Debug\GraphSharpTutorial01.Properties.Resources.resources
 D:\Programming\C#\CoursePlanner - Copy\obj\Debug\CoursePlanner.csproj.GenerateResource.Cache
 D:\Programming\C#\CoursePlanner - Copy\obj\Debug\CoursePlanner.csproj.CoreCompileInputs.cache
-D:\Programming\C#\CoursePlanner - Copy\obj\Debug\GraphSharpTutorial01.exe
-D:\Programming\C#\CoursePlanner - Copy\obj\Debug\GraphSharpTutorial01.pdb
 D:\Programming\C#\CoursePlanner\bin\Debug\GraphSharpTutorial01.exe
 D:\Programming\C#\CoursePlanner\bin\Debug\GraphSharpTutorial01.pdb
 D:\Programming\C#\CoursePlanner\bin\Debug\GraphSharp.pdb
@@ -26,3 +20,12 @@ D:\Programming\C#\CoursePlanner\obj\Debug\CoursePlanner.csproj.GenerateResource.
 D:\Programming\C#\CoursePlanner\obj\Debug\CoursePlanner.csproj.CoreCompileInputs.cache
 D:\Programming\C#\CoursePlanner\obj\Debug\GraphSharpTutorial01.exe
 D:\Programming\C#\CoursePlanner\obj\Debug\GraphSharpTutorial01.pdb
+D:\Programming\C#\CoursePlanner - Copy\bin\Debug\CoursePlanner.exe
+D:\Programming\C#\CoursePlanner - Copy\bin\Debug\CoursePlanner.pdb
+D:\Programming\C#\CoursePlanner - Copy\obj\Debug\CoursePlanner_MarkupCompile.cache
+D:\Programming\C#\CoursePlanner - Copy\obj\Debug\CoursePlanner.g.resources
+D:\Programming\C#\CoursePlanner - Copy\obj\Debug\CoursePlanner.exe
+D:\Programming\C#\CoursePlanner - Copy\obj\Debug\CoursePlanner.pdb
+D:\Programming\C#\CoursePlanner - Copy\obj\Debug\MainWindow.g.cs
+D:\Programming\C#\CoursePlanner - Copy\obj\Debug\CoursePlanner_MarkupCompile.lref
+D:\Programming\C#\CoursePlanner - Copy\obj\Debug\MainWindow.baml

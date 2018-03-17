@@ -1,0 +1,26 @@
+﻿<Window x:Class="CoursePlanner.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GraphSharpTutorial01"
+        mc:Ignorable="d"
+        Title="CoursePlanner" Height="525" Width="525
+        ">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="180*"/>
+            <ColumnDefinition Width="113*"/>
+        </Grid.ColumnDefinitions>
+        <RichTextBox x:Name="outputBox"
+                     Margin="0,78,0,-0.8"
+                     VerticalScrollBarVisibility="Visible" 
+                     HorizontalScrollBarVisibility="Visible" 
+                     IsReadOnly="True" Grid.ColumnSpan="2">
+            <FlowDocument/>
+        </RichTextBox>
+        <Button Content="Open File" Click="ButtonClicked" Height="25" HorizontalAlignment="Left" Margin="79.162,27,0,0" x:Name="button1" VerticalAlignment="Top" Width="100" Grid.Column="1" />
+        <TextBox HorizontalAlignment="Left" Name="text1" Height="25" Margin="23.983,27,0,0" TextWrapping="Wrap" Text="Insert file name here" VerticalAlignment="Top" Width="337.579" Grid.ColumnSpan="2"/>
+
+    </Grid>
+</Window>

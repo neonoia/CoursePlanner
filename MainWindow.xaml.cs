@@ -9,52 +9,48 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
-using QuickGraph;
 
 namespace CoursePlanner
 {
     /// <summary>
-    /// Interaction logic for Window1.xaml
+    /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class Window1 : Window
+    public partial class MainWindow : Window
     {
         string FileName;
-        private IBidirectionalGraph<object, IEdge<object>> _graphToVisualize;
-
-        public IBidirectionalGraph<object, IEdge<object>> GraphToVisualize
+        public MainWindow()
         {
-            get { return _graphToVisualize; }
+            InitializeComponent();
         }
 
-        public Window1(string a)
+
+        private void ButtonClicked(object sender, RoutedEventArgs e)
         {
-            FileName = a;
+            FileName = text1.Text;
 
             Graph gr = ReadFile(FileName);
 
-            // DRAW GRAPH USING GraphSharp and QuickGraph
-            var g = new BidirectionalGraph<object, IEdge<object>>();
-
-            //add the vertices to the graph
-            string[] vertices = new string[gr.getVertice()];
-            for (int i = 0; i < gr.getVertice(); i++)
+            // BFS IMPLEMENTATION
+            outputBox.AppendText("Running BFS Topological Algorithm...\n");
+            List<int> result = gr.topologicalSortBFS();
+            outputBox.AppendText("BFS Topological Sort Result: (");
+            for (int i = 0; i < result.Count; i++)
             {
-                vertices[i] = i.ToString();
-                g.AddVertex(vertices[i]);
+                if (i != 0) outputBox.AppendText(",");
+                outputBox.AppendText(result[i].ToString());
             }
+            outputBox.AppendText(")\n");
 
-            //add some edges to the graph
-            for (int i=0; i<gr.getVertice(); i++){
-                for(int j=0; j<gr.getAdjIdxLength(i); j++){
-                    g.AddEdge(new Edge<object>(vertices[i], vertices[gr.getAdj(i,j)]));
-                }
-            }
+            // DFS IMPLEMENTATION
+            outputBox.AppendText("Running DFS Topological Algorithm...\n");
+            List<int>[] res = gr.topologicalSortDFS();
+            outputBox.AppendText("DFS Topological Sort Result: \n");
+            for (int i = 0; i < res.Length; i++)
+                outputBox.AppendText((res[i])[0] + " Timestamp(start/stop): (" + (res[i])[1] + "/" + (res[i])[2] + ")\n");
 
-            _graphToVisualize = g;
-
-            InitializeComponent();
+            Window1 subWindow = new Window1(FileName);
+            subWindow.Show();
         }
 
         private Graph ReadFile(string FileName)
