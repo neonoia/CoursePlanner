@@ -29,6 +29,19 @@ namespace CoursePlanner
             (adj[a]).Add(b);
         }
 
+        // getter for class attributes
+        public int getVertice(){
+            return vertice;
+        }
+
+        public int getAdj(int a, int b){
+            return (adj[a])[b];
+        }
+
+        public int getAdjIdxLength(int a){
+            return (adj[a]).Count;
+        }
+
         // implementing kahn's algorithm for topological sorting
         public List<int> topologicalSortBFS()
         {

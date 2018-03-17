@@ -29,20 +29,12 @@ namespace CoursePlanner
 
         public Window1()
         {
-            Graph g = new Graph(5);
-            g.addEdges(2, 0);
-            g.addEdges(2, 3);
-            g.addEdges(0, 1);
-            g.addEdges(0, 3);
-            g.addEdges(3, 1);
-            g.addEdges(3, 4);
-            g.addEdges(1, 4);
-
+            Graph gr = ReadFile();
             Console.Clear();
-
+            
             // BFS IMPLEMENTATION
             Console.Write("\nRunning BFS Topological Algorithm...\n");
-            List<int> result = g.topologicalSortBFS();
+            List<int> result = gr.topologicalSortBFS();
             Console.Write("\nBFS Topological Sort Result: (");
             for (int i = 0; i < result.Count; i++)
             {
@@ -53,38 +45,82 @@ namespace CoursePlanner
 
             // DFS IMPLEMENTATION
             Console.Write("\nRunning DFS Topological Algorithm...\n");
-            List<int>[] res = g.topologicalSortDFS();
+            List<int>[] res = gr.topologicalSortDFS();
             Console.WriteLine("\nDFS Topological Sort Result: \n");
             for (int i = 0; i < res.Length; i++) 
                 Console.Write((res[i])[0] + " Timestamp(start/stop): (" + (res[i])[1] + "/" + (res[i])[2] + ")\n\n");
                 
-            CreateGraphToVisualize();
-
-            InitializeComponent();
-        }
-
-        private void CreateGraphToVisualize()
-        {
+            // DRAW GRAPH USING GraphSharp and QuickGraph
             var g = new BidirectionalGraph<object, IEdge<object>>();
 
             //add the vertices to the graph
-            string[] vertices = new string[5];
-            for (int i = 0; i < 5; i++)
+            string[] vertices = new string[gr.getVertice()];
+            for (int i = 0; i < gr.getVertice(); i++)
             {
                 vertices[i] = i.ToString();
                 g.AddVertex(vertices[i]);
             }
 
             //add some edges to the graph
-            g.AddEdge(new Edge<object>(vertices[2], vertices[0]));
-            g.AddEdge(new Edge<object>(vertices[2], vertices[3]));
-            g.AddEdge(new Edge<object>(vertices[0], vertices[1]));
-            g.AddEdge(new Edge<object>(vertices[0], vertices[3])); 
-            g.AddEdge(new Edge<object>(vertices[3], vertices[1]));
-            g.AddEdge(new Edge<object>(vertices[3], vertices[4]));
-            g.AddEdge(new Edge<object>(vertices[1], vertices[4]));
+            for (int i=0; i<gr.getVertice(); i++){
+                for(int j=0; j<gr.getAdjIdxLength(i); j++){
+                    g.AddEdge(new Edge<object>(vertices[i], vertices[gr.getAdj(i,j)]));
+                }
+            }
 
             _graphToVisualize = g;
+
+            InitializeComponent();
+        }
+
+        private Graph ReadFile()
+        {
+            // Local Variables
+            int ammount = 0;
+            string line;
+            char ch;
+            int num;
+            int course_now = -1;
+
+            // Count the total courses
+            System.IO.StreamReader file = new System.IO.StreamReader(@"D:\Programming\C#\CoursePlanner\File.txt");
+            while ((line = file.ReadLine()) != null)
+            {
+                ammount++;
+            }
+            file.Close();
+            Graph g = new Graph(ammount);
+            
+            // Read each courses and its pre-requisite
+            System.IO.StreamReader files = new System.IO.StreamReader(@"D:\Programming\C#\CoursePlanner\File.txt");
+            while (!files.EndOfStream)
+            {
+                ch = (char)files.Read();
+                if (ch == 'C')
+                {
+                    if (course_now == -1)
+                    {
+                        ch = (char)files.Read();
+                        course_now = (int)Char.GetNumericValue(ch) - 1;
+                    }
+                    else
+                    {
+                        ch = (char)files.Read();
+                        num = (int)Char.GetNumericValue(ch) - 1;
+                        // add edges from two vertices
+                        g.addEdges(num, course_now);
+                    }
+                }
+                else
+                {
+                    if (ch == '.')
+                    {
+                        course_now = -1;
+                    }
+                }
+            }
+            files.Close();
+            return g;
         }
     }
 }
