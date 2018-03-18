@@ -22,6 +22,16 @@ namespace CoursePlanner
         public MainWindow()
         {
             InitializeComponent();
+
+            outputBox.AppendText("Hello and Welcome! ");
+            outputBox.AppendText("This program will help you plan and sort your college course!\n");
+            outputBox.AppendText("Made with heart by Blek Panther Team :\n");
+            outputBox.AppendText("13516081 - Rabbi Fijar Mayoza\n");
+            outputBox.AppendText("13516106 - Kurniandha Sukma Yunastrian\n");
+            outputBox.AppendText("13516137 - Hafizh Budiman\n");
+            outputBox.AppendText("Informatics Engineering, Bandung Institute of Technology\n");
+            outputBox.AppendText("Copyright 2018\n");
+            outputBox.AppendText("Follow README.md to run this program.\n");
         }
 
 
