@@ -32,3 +32,21 @@ D:\Programming\C#\CoursePlanner\obj\Debug\MainWindow.baml
 D:\Programming\C#\CoursePlanner\obj\Debug\CoursePlanner.g.resources
 D:\Programming\C#\CoursePlanner\obj\Debug\CoursePlanner.exe
 D:\Programming\C#\CoursePlanner\obj\Debug\CoursePlanner.pdb
+C:\Users\kurniandha\Downloads\Tubes 2\CoursePlanner\bin\Debug\CoursePlanner.exe
+C:\Users\kurniandha\Downloads\Tubes 2\CoursePlanner\bin\Debug\CoursePlanner.pdb
+C:\Users\kurniandha\Downloads\Tubes 2\CoursePlanner\bin\Debug\GraphSharp.pdb
+C:\Users\kurniandha\Downloads\Tubes 2\CoursePlanner\obj\Debug\CoursePlanner.csprojResolveAssemblyReference.cache
+C:\Users\kurniandha\Downloads\Tubes 2\CoursePlanner\obj\Debug\Window1.baml
+C:\Users\kurniandha\Downloads\Tubes 2\CoursePlanner\obj\Debug\MainWindow.g.cs
+C:\Users\kurniandha\Downloads\Tubes 2\CoursePlanner\obj\Debug\Window1.g.cs
+C:\Users\kurniandha\Downloads\Tubes 2\CoursePlanner\obj\Debug\App.g.cs
+C:\Users\kurniandha\Downloads\Tubes 2\CoursePlanner\obj\Debug\CoursePlanner_MarkupCompile.cache
+C:\Users\kurniandha\Downloads\Tubes 2\CoursePlanner\obj\Debug\CoursePlanner_MarkupCompile.lref
+C:\Users\kurniandha\Downloads\Tubes 2\CoursePlanner\obj\Debug\MainWindow.baml
+C:\Users\kurniandha\Downloads\Tubes 2\CoursePlanner\obj\Debug\CoursePlanner.g.resources
+C:\Users\kurniandha\Downloads\Tubes 2\CoursePlanner\obj\Debug\GraphSharpTutorial01.Properties.Resources.resources
+C:\Users\kurniandha\Downloads\Tubes 2\CoursePlanner\obj\Debug\CoursePlanner.csproj.GenerateResource.cache
+C:\Users\kurniandha\Downloads\Tubes 2\CoursePlanner\obj\Debug\CoursePlanner.csproj.CoreCompileInputs.cache
+C:\Users\kurniandha\Downloads\Tubes 2\CoursePlanner\obj\Debug\CoursePlanner.csproj.CopyComplete
+C:\Users\kurniandha\Downloads\Tubes 2\CoursePlanner\obj\Debug\CoursePlanner.exe
+C:\Users\kurniandha\Downloads\Tubes 2\CoursePlanner\obj\Debug\CoursePlanner.pdb

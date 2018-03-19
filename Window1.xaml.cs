@@ -62,9 +62,11 @@ namespace CoursePlanner
             // Local Variables
             int ammount = 0;
             string line;
+            StringBuilder temp1 = new StringBuilder();
+            StringBuilder temp2 = new StringBuilder();
             char ch;
             int num;
-            int course_now = -1;
+            int course_now = 0;
 
             // Count the total courses
             System.IO.StreamReader file = new System.IO.StreamReader(FileName);
@@ -74,36 +76,102 @@ namespace CoursePlanner
             }
             file.Close();
             Graph g = new Graph(ammount);
+            string[] course_code = new string[ammount];
 
-            // Read each courses and its pre-requisite
+            // Read each course code
             System.IO.StreamReader files = new System.IO.StreamReader(FileName);
             while (!files.EndOfStream)
             {
                 ch = (char)files.Read();
-                if (ch == 'C')
+                if (ch != '.')
                 {
-                    if (course_now == -1)
+                    if (ch != ',')
                     {
-                        ch = (char)files.Read();
-                        course_now = (int)Char.GetNumericValue(ch) - 1;
+                        temp1.Append(ch);
                     }
                     else
                     {
+                        course_code[course_now] = temp1.ToString();
+                        course_now++;
+                        temp1.Length = 0;
+                        while (ch != '.')
+                        {
+                            ch = (char)files.Read();
+                        }
                         ch = (char)files.Read();
-                        num = (int)Char.GetNumericValue(ch) - 1;
-                        // add edges from two vertices
-                        g.addEdges(num, course_now);
+                        ch = (char)files.Read();
                     }
                 }
                 else
                 {
-                    if (ch == '.')
-                    {
-                        course_now = -1;
-                    }
+                    course_code[course_now] = temp1.ToString();
+                    course_now++;
+                    temp1.Length = 0;
+                    ch = (char)files.Read();
+                    ch = (char)files.Read();
                 }
             }
             files.Close();
+
+            // Read each course code pre-requisite
+            course_now = 0;
+            int sign = 0;
+            System.IO.StreamReader filesn = new System.IO.StreamReader(FileName);
+            while (!filesn.EndOfStream)
+            {
+                ch = (char)filesn.Read();
+                if (ch != '.')
+                {
+                    if (ch != ',')
+                    {
+                        temp2.Append(ch);
+                    }
+                    else
+                    {
+                        if (sign == 0)
+                        {
+                            sign = 1;
+                            temp2.Length = 0;
+                        }
+                        else
+                        {
+                            for (num = 0; num < ammount;num++) 
+                            {
+                                if (string.Equals(course_code[num], temp2.ToString())) {
+                                    g.addEdges(num, course_now);
+                                    num = ammount + 1;
+                                }
+                            }
+                            temp2.Length = 0;
+                        }
+                        ch = (char)filesn.Read();
+                    }
+                }
+                else
+                {
+                    if (sign == 0)
+                    {
+                        temp2.Length = 0;
+                        course_now++;
+                    }
+                    else
+                    {
+                        sign = 0;
+                        for (num = 0; num < ammount; num++)
+                        {
+                            
+                            if (string.Compare(course_code[num],temp2.ToString()) == 0)
+                            {
+                                g.addEdges(num, course_now);
+                                num = ammount + 1;
+                            }
+                        }
+                        temp2.Length = 0;
+                        course_now++;
+                    }
+                }
+            }
+            filesn.Close();
             return g;
         }
     }

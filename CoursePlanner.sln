@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27130.2036
+VisualStudioVersion = 15.0.27428.2005
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GraphSharpTutorial01", "GraphSharpTutorial01.csproj", "{890195C9-5CD6-4A45-80E6-0E82D742F955}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoursePlanner", "CoursePlanner.csproj", "{890195C9-5CD6-4A45-80E6-0E82D742F955}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -20,6 +20,6 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {9170E788-9A46-4A9D-8DDF-E1AB31FF97E6}
+		SolutionGuid = {278AFEB5-5B9F-4D8D-A4C6-16C1FDB68839}
 	EndGlobalSection
 EndGlobal
