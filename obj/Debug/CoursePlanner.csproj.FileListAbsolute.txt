@@ -50,3 +50,21 @@ C:\Users\kurniandha\Downloads\Tubes 2\CoursePlanner\obj\Debug\CoursePlanner.cspr
 C:\Users\kurniandha\Downloads\Tubes 2\CoursePlanner\obj\Debug\CoursePlanner.csproj.CopyComplete
 C:\Users\kurniandha\Downloads\Tubes 2\CoursePlanner\obj\Debug\CoursePlanner.exe
 C:\Users\kurniandha\Downloads\Tubes 2\CoursePlanner\obj\Debug\CoursePlanner.pdb
+D:\MyCodes\C#\Stima\CoursePlanner\bin\Debug\CoursePlanner.exe
+D:\MyCodes\C#\Stima\CoursePlanner\bin\Debug\CoursePlanner.pdb
+D:\MyCodes\C#\Stima\CoursePlanner\bin\Debug\GraphSharp.pdb
+D:\MyCodes\C#\Stima\CoursePlanner\obj\Debug\CoursePlanner.csprojResolveAssemblyReference.cache
+D:\MyCodes\C#\Stima\CoursePlanner\obj\Debug\Window1.baml
+D:\MyCodes\C#\Stima\CoursePlanner\obj\Debug\MainWindow.g.cs
+D:\MyCodes\C#\Stima\CoursePlanner\obj\Debug\Window1.g.cs
+D:\MyCodes\C#\Stima\CoursePlanner\obj\Debug\App.g.cs
+D:\MyCodes\C#\Stima\CoursePlanner\obj\Debug\CoursePlanner_MarkupCompile.cache
+D:\MyCodes\C#\Stima\CoursePlanner\obj\Debug\CoursePlanner_MarkupCompile.lref
+D:\MyCodes\C#\Stima\CoursePlanner\obj\Debug\MainWindow.baml
+D:\MyCodes\C#\Stima\CoursePlanner\obj\Debug\CoursePlanner.g.resources
+D:\MyCodes\C#\Stima\CoursePlanner\obj\Debug\GraphSharpTutorial01.Properties.Resources.resources
+D:\MyCodes\C#\Stima\CoursePlanner\obj\Debug\CoursePlanner.csproj.GenerateResource.cache
+D:\MyCodes\C#\Stima\CoursePlanner\obj\Debug\CoursePlanner.csproj.CoreCompileInputs.cache
+D:\MyCodes\C#\Stima\CoursePlanner\obj\Debug\CoursePlanner.csproj.CopyComplete
+D:\MyCodes\C#\Stima\CoursePlanner\obj\Debug\CoursePlanner.exe
+D:\MyCodes\C#\Stima\CoursePlanner\obj\Debug\CoursePlanner.pdb
