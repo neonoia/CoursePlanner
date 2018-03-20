@@ -41,25 +41,26 @@ namespace CoursePlanner
             FileName = text1.Text;
 
             Graph gr = ReadFile(FileName);
+            string[] course_code = ReadCourses(FileName);
 
             // BFS IMPLEMENTATION
             outputBox.AppendText("Running BFS Topological Algorithm...\n");
-            try           
+            try
             {
                 List<int> result = gr.topologicalSortBFS();
                 outputBox.AppendText("BFS Topological Sort Result: (");
                 for (int i = 0; i < result.Count; i++)
                 {
                     if (i != 0) outputBox.AppendText(",");
-                    outputBox.AppendText(result[i].ToString());
+                    outputBox.AppendText(course_code[result[i]]);
                 }
                 outputBox.AppendText(")\n");
             }
-            catch(NullReferenceException ne)
+            catch (NullReferenceException ne)
             {
                 outputBox.AppendText("No result\n");
             }
-           
+
 
             // DFS IMPLEMENTATION
             outputBox.AppendText("Running DFS Topological Algorithm...\n");
@@ -68,16 +69,93 @@ namespace CoursePlanner
             {
                 List<int>[] res = gr.topologicalSortDFS();
                 outputBox.AppendText("DFS Topological Sort Result: \n");
-                for (int i = 0; i < res.Length; i++)
-                    outputBox.AppendText((res[i])[0] + " Timestamp(start/stop): (" + (res[i])[1] + "/" + (res[i])[2] + ")\n");
+
+                for (int j = res.Length*2; j >= 0; j--)
+                {
+                    for (int i = res.Length - 1; i >= 0; i--)
+                    {
+                        if ((res[i])[2] == j)
+                        {
+                            outputBox.AppendText(course_code[(res[i])[0]] + " Timestamp(start/stop): (" + (res[i])[1] + "/" + (res[i])[2] + ")\n");
+                        }
+                    }
+                }
             }
-            catch(NullReferenceException en)
+            catch (NullReferenceException en)
             {
                 outputBox.AppendText("No result\n");
             }
 
             Window1 subWindow = new Window1(FileName);
             subWindow.Show();
+        }
+
+        private string[] ReadCourses(string FileName)
+        {
+            // Local Variables
+            int ammount = 0;
+            string line;
+            StringBuilder temp1 = new StringBuilder();
+            StringBuilder temp2 = new StringBuilder();
+            char ch;
+            int num;
+            int course_now = 0;
+
+            try
+            {
+                // Count the total courses
+                System.IO.StreamReader file = new System.IO.StreamReader(FileName);
+                while ((line = file.ReadLine()) != null)
+                {
+                    ammount++;
+                }
+                file.Close();
+
+                Graph g = new Graph(ammount);
+                string[] course_code = new string[ammount];
+
+                // Read each course code
+                System.IO.StreamReader files = new System.IO.StreamReader(FileName);
+                while (!files.EndOfStream)
+                {
+                    ch = (char)files.Read();
+                    if (ch != '.')
+                    {
+                        if (ch != ',')
+                        {
+                            temp1.Append(ch);
+                        }
+                        else
+                        {
+                            course_code[course_now] = temp1.ToString();
+                            course_now++;
+                            temp1.Length = 0;
+                            while (ch != '.')
+                            {
+                                ch = (char)files.Read();
+                            }
+                            ch = (char)files.Read();
+                            ch = (char)files.Read();
+                        }
+                    }
+                    else
+                    {
+                        course_code[course_now] = temp1.ToString();
+                        course_now++;
+                        temp1.Length = 0;
+                        ch = (char)files.Read();
+                        ch = (char)files.Read();
+                    }
+                }
+                files.Close();
+                return course_code;
+            }
+            catch (FileNotFoundException e)
+            {
+                Console.WriteLine("[Data File Missing] {0}", e);
+                outputBox.AppendText("File Not Found !\n");
+                return null;
+            }
         }
 
         private Graph ReadFile(string FileName)

@@ -34,6 +34,7 @@ namespace CoursePlanner
             FileName = a;
 
             Graph gr = ReadFile(FileName);
+            string[] course_code = ReadCourses(FileName);
 
             // DRAW GRAPH USING GraphSharp and QuickGraph
             var g = new BidirectionalGraph<object, IEdge<object>>();
@@ -44,7 +45,7 @@ namespace CoursePlanner
                 string[] vertices = new string[gr.getVertice()];
                 for (int i = 0; i < gr.getVertice(); i++)
                 {
-                    vertices[i] = i.ToString();
+                    vertices[i] = course_code[i];
                     g.AddVertex(vertices[i]);
                 }
 
@@ -62,6 +63,72 @@ namespace CoursePlanner
             }
             catch (NullReferenceException ne)
             {
+            }
+        }
+
+        private string[] ReadCourses(string FileName)
+        {
+            // Local Variables
+            int ammount = 0;
+            string line;
+            StringBuilder temp1 = new StringBuilder();
+            StringBuilder temp2 = new StringBuilder();
+            char ch;
+            int num;
+            int course_now = 0;
+
+            try
+            {
+                // Count the total courses
+                System.IO.StreamReader file = new System.IO.StreamReader(FileName);
+                while ((line = file.ReadLine()) != null)
+                {
+                    ammount++;
+                }
+                file.Close();
+
+                Graph g = new Graph(ammount);
+                string[] course_code = new string[ammount];
+
+                // Read each course code
+                System.IO.StreamReader files = new System.IO.StreamReader(FileName);
+                while (!files.EndOfStream)
+                {
+                    ch = (char)files.Read();
+                    if (ch != '.')
+                    {
+                        if (ch != ',')
+                        {
+                            temp1.Append(ch);
+                        }
+                        else
+                        {
+                            course_code[course_now] = temp1.ToString();
+                            course_now++;
+                            temp1.Length = 0;
+                            while (ch != '.')
+                            {
+                                ch = (char)files.Read();
+                            }
+                            ch = (char)files.Read();
+                            ch = (char)files.Read();
+                        }
+                    }
+                    else
+                    {
+                        course_code[course_now] = temp1.ToString();
+                        course_now++;
+                        temp1.Length = 0;
+                        ch = (char)files.Read();
+                        ch = (char)files.Read();
+                    }
+                }
+                files.Close();
+                return course_code;
+            }
+            catch (FileNotFoundException e)
+            {
+                return null;
             }
         }
 

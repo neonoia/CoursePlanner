@@ -145,7 +145,7 @@ namespace CoursePlanner
             visited[v] = true;
             start++;                        // increment timestamp whenever visiting new vertice
             (time[v]).Add(start);           // write visit timestamp to time[v]
-
+            st.Push(v);
             // recursively visit the unvisited vertice
             for (int i = 0; i < (adj[v]).Count; i++)
             {
@@ -157,7 +157,6 @@ namespace CoursePlanner
                     }
                 }
             }
-            st.Push(v);
             start++;                        // increment timestamp whenever pushing (sign of leaving) vertice
             (time[v]).Add(start);           // write leaving timestamp to time[v]
         }
